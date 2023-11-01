@@ -13,7 +13,6 @@ class RuaDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      elevation: 10,
       child: SafeArea(
         child: ListView.builder(
           padding: const EdgeInsets.all(20),

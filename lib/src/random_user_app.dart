@@ -3,12 +3,17 @@ import 'package:flutter/material.dart';
 import 'config/config.dart';
 
 class RandomUserApp extends StatelessWidget {
-  const RandomUserApp({super.key});
+  final color = RandomUserAppTheme.orange.color;
+
+  RandomUserApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Random User App',
+    return MaterialApp(
+      title: appTitle,
+      theme: theme(color, Brightness.light),
+      darkTheme: theme(color, Brightness.dark),
+      themeMode: ThemeMode.system,
       initialRoute: defaultRoute,
       onGenerateRoute: AppRoutes.onGenerateRoutes,
     );

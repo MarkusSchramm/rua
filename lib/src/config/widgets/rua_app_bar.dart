@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:rua/src/config/routes/route_names.dart';
+
 class RuaAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final String parentName;
@@ -13,7 +15,9 @@ class RuaAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(title: Text(parentName));
+    return AppBar(
+        title: Text(parentName == homeName ? appTitle : parentName)
+    );
   }
 
   @override

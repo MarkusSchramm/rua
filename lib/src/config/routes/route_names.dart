@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const String appTitle = 'Random User App';
 const String defaultRoute = '/';
 
 const String homeRoute = '/home';

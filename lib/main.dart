@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'src/random_user_app.dart';
+import 'src/core/core.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const RandomUserApp());
+  await initializeDependencies();
+  runApp(RandomUserApp());
 }
