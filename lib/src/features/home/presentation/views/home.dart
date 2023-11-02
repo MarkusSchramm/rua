@@ -12,7 +12,9 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: RuaAppBar(parentName: name),
       drawer: RuaDrawer(parentName: name),
-      body: Center(child: Text(name)),
+      body: Center(
+        child: Text(name),
+      ),
     );
   }
 }
