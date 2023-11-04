@@ -10,7 +10,7 @@ abstract class UserDao {
   @delete
   Future<void> deleteUser(UserModel user);
 
-  @Query('DELETE * FROM users')
+  @Query('DELETE FROM users')
   Future<void> deleteAllUsers();
 
   @Query('SELECT * FROM users')

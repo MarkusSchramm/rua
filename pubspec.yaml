@@ -63,6 +63,12 @@ dependencies:
   # saving theme to shared prefs
   shared_preferences: ^2.2.2
 
+  # hooks
+  flutter_hooks: ^0.20.2
+
+  #cached image
+  cached_network_image: ^3.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

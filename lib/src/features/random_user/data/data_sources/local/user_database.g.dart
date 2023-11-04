@@ -152,7 +152,7 @@ class _$UserDao extends UserDao {
 
   @override
   Future<void> deleteAllUsers() async {
-    await _queryAdapter.queryNoReturn('DELETE * FROM users');
+    await _queryAdapter.queryNoReturn('DELETE FROM users');
   }
 
   @override

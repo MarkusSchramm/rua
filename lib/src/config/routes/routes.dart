@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:rua/src/features/home/presentation/views/home.dart';
 import 'package:rua/src/features/home/presentation/views/settings.dart';
+import 'package:rua/src/features/random_user/domain/entities/user_entity.dart';
 import 'package:rua/src/features/random_user/presentation/views/custom_user_generator.dart';
 import 'package:rua/src/features/random_user/presentation/views/qr_scanner.dart';
 import 'package:rua/src/features/random_user/presentation/views/random_user_generator.dart';
@@ -23,10 +24,10 @@ class AppRoutes {
         return _materialRoute(const RandomUserGenerator());
 
       case customUserRoute:
-        return _materialRoute(const CustomUserGenerator());
+        return _materialRoute(CustomUserGenerator(user: settings.arguments as UserEntity));
 
       case userDetailsRoute:
-        return _materialRoute(const UserDetails());
+        return _materialRoute(UserDetails(user: settings.arguments as UserEntity));
 
       case savedUsersRoute:
         return _materialRoute(const SavedUsers());

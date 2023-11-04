@@ -27,9 +27,8 @@ const String qrScannerName = 'QR Scanner';
 enum RandomUserAppRoute {
   home(homeRoute, homeName, Icons.home),
   settings(settingsRoute, settingsName, Icons.settings),
-  randomUserGen(randomUserRoute, randomUserName, Icons.create),
-  customUserGen(customUserRoute, customUserName, Icons.create_outlined),
-  userDetails(userDetailsRoute, userDetailsName, Icons.person),
+  randomUserGen(randomUserRoute, randomUserName, Icons.person_add_outlined),
+  customUserGen(customUserRoute, customUserName, Icons.person_add),
   savedUsers(savedUsersRoute, savedUsersName, Icons.people),
   qrScanner(qrScannerRoute, qrScannerName, Icons.qr_code);
 

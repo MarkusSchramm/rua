@@ -6,5 +6,5 @@ import 'src/core/core.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDependencies();
-  runApp(RandomUserApp());
+  runApp(const RandomUserApp());
 }

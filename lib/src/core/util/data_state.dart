@@ -14,3 +14,8 @@ class DataSuccess<T> extends DataState<T> {
 class DataFail<T> extends DataState<T> {
   const DataFail(DioException error) : super(error: error);
 }
+
+enum TextFieldError {
+  empty, 
+  invalid
+}

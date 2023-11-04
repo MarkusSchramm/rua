@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:rua/src/config/config.dart';
 
+import '../../features/random_user/domain/entities/user_entity.dart';
+
 class RuaNavButton extends StatelessWidget {
   final RandomUserAppRoute route;
   final String parentName;
@@ -16,7 +18,11 @@ class RuaNavButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: route.name == parentName ? null : () {
-        Navigator.pushNamed(context, route.route);
+        if(route.name == RandomUserAppRoute.customUserGen.name) {
+          Navigator.pushNamed(context, route.route, arguments: const UserEntity());
+        } else {
+          Navigator.pushNamed(context, route.route);
+        }
       },
       child: SizedBox(
         width: double.infinity,

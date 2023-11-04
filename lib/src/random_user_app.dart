@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rua/src/features/random_user/presentation/viewmodels/custom_user_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'config/config.dart';
+import 'core/core.dart';
+import 'features/random_user/presentation/viewmodels/local_user_bloc.dart';
+import 'features/random_user/presentation/viewmodels/remote_user_bloc.dart';
 
 class RandomUserApp extends StatefulWidget {
 
@@ -28,13 +33,20 @@ class _RandomUserAppState extends State<RandomUserApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: appTitle,
-      theme: theme(_color, Brightness.light),
-      darkTheme: theme(_color, Brightness.dark),
-      themeMode: _mode,
-      initialRoute: defaultRoute,
-      onGenerateRoute: AppRoutes.onGenerateRoutes,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<RemoteUserBloc>(create: (context) => sl<RemoteUserBloc>()),
+        BlocProvider<LocalUserBloc>(create: (context) => sl<LocalUserBloc>()),
+        BlocProvider<CustomUserBloc>(create: (context) => sl<CustomUserBloc>())
+      ],
+      child: MaterialApp(
+        title: appTitle,
+        theme: theme(_color, Brightness.light),
+        darkTheme: theme(_color, Brightness.dark),
+        themeMode: _mode,
+        initialRoute: defaultRoute,
+        onGenerateRoute: AppRoutes.onGenerateRoutes,
+      ),
     );
   }
 
