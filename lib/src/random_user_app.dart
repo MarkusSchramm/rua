@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rua/src/features/random_user/presentation/viewmodels/custom_user_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'config/config.dart';
 import 'core/core.dart';
+
 import 'features/random_user/presentation/viewmodels/local_user_bloc.dart';
 import 'features/random_user/presentation/viewmodels/remote_user_bloc.dart';
+import 'package:rua/src/features/random_user/presentation/viewmodels/custom_user_bloc.dart';
 
 class RandomUserApp extends StatefulWidget {
 
