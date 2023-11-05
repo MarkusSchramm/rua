@@ -1,4 +1,5 @@
 import 'package:rua/src/core/util/data_state.dart';
+
 import '../entities/user_entity.dart';
 
 abstract class UserRepository {

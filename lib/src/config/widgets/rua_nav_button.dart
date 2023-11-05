@@ -18,10 +18,12 @@ class RuaNavButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: route.name == parentName ? null : () {
-        if(route.name == RandomUserAppRoute.customUserGen.name) {
-          Navigator.pushNamed(context, route.route, arguments: const UserEntity(email: ''));
-        } else {
+        if(route.name == RandomUserAppRoute.home.name) {
           Navigator.pushNamed(context, route.route);
+        } else if(route.name == RandomUserAppRoute.customUserGen.name) {
+          Navigator.pushReplacementNamed(context, route.route, arguments: const UserEntity(email: ''));
+        } else {
+          Navigator.pushReplacementNamed(context, route.route);
         }
       },
       child: SizedBox(

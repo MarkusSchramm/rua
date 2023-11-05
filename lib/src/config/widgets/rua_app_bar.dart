@@ -9,7 +9,7 @@ class RuaAppBar extends StatelessWidget implements PreferredSizeWidget {
   //@TODO: adjust height
   const RuaAppBar({
     super.key,
-    this.height = 70,
+    this.height = 50,
     required this.parentName
   });
 

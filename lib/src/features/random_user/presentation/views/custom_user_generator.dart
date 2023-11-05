@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:rua/src/config/config.dart';
-import 'package:rua/src/core/util/validation.dart';
-import 'package:rua/src/features/random_user/presentation/viewmodels/local_user_bloc.dart';
-import 'package:rua/src/features/random_user/presentation/viewmodels/local_user_event.dart';
-import 'package:rua/src/features/random_user/presentation/widgets/custom_user_input.dart';
 
 import '../../domain/entities/user_entity.dart';
 import '../viewmodels/custom_user_bloc.dart';
 import '../viewmodels/custom_user_event.dart';
 import '../viewmodels/custom_user_state.dart';
+import '../viewmodels/local_user_bloc.dart';
+import '../viewmodels/local_user_event.dart';
+import '../widgets/bottom_button.dart';
+import '../widgets/custom_user_input.dart';
 
 class CustomUserGenerator extends StatefulWidget {
   final UserEntity user;
@@ -67,7 +67,7 @@ class _CustomUserGeneratorState extends State<CustomUserGenerator> {
                     child: const Text('Save'),
                     onPressed: () {
                       BlocProvider.of<LocalUserBloc>(context).add(SaveUser(user: _user));
-                      Navigator.pushNamed(context, savedUsersRoute);
+                      Navigator.pushReplacementNamed(context, savedUsersRoute);
                     },
                   ),
                   ElevatedButton(
@@ -82,6 +82,8 @@ class _CustomUserGeneratorState extends State<CustomUserGenerator> {
       },
       child: Scaffold(
         appBar: RuaAppBar(parentName: name),
+        drawer: RuaDrawer(parentName: name),
+        bottomNavigationBar: _buildBottomBar(context),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Center(
@@ -198,5 +200,55 @@ class _CustomUserGeneratorState extends State<CustomUserGenerator> {
         );
       });
     }
+  }
+
+  Widget _buildBottomBar(BuildContext context) {
+    return Builder(
+      builder: (context) =>
+          BottomAppBar(
+            child: Row(
+              children: [
+                BottomButton(
+                  icon: Icons.delete,
+                  toolTip: 'Delete User',
+                  onPressed: () => _onDeleteButtonPressed(context, _user),
+                ),
+                BottomButton(
+                  icon: RandomUserAppRoute.home.icon,
+                  toolTip: RandomUserAppRoute.home.name,
+                  onPressed: () => _onHomeButtonPressed(context),
+                ),
+                BottomButton(
+                  icon: Icons.save,
+                  toolTip: 'Save User',
+                  onPressed: () => _onSaveButtonPressed(context, _user),
+                ),
+              ],
+            ),
+          ),
+    );
+  }
+
+  void _onDeleteButtonPressed(BuildContext context, UserEntity user) {
+    BlocProvider.of<LocalUserBloc>(context).add(RemoveUser(user: _user));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('User deleted successfully.'),
+      ),
+    );
+    Navigator.pushReplacementNamed(context, customUserRoute, arguments: const UserEntity(email: ''));
+  }
+
+  void _onHomeButtonPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, homeRoute);
+  }
+
+  void _onSaveButtonPressed(BuildContext context, UserEntity user) {
+    BlocProvider.of<LocalUserBloc>(context).add(SaveUser(user: _user));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('User saved successfully.'),
+      ),
+    );
   }
 }

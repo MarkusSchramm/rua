@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rua/src/features/random_user/presentation/viewmodels/custom_user_state.dart';
 
-import '../../../../core/core.dart';
-import '../../../../core/util/validation.dart';
+import 'package:rua/src/core/core.dart';
+
+import '../viewmodels/custom_user_state.dart';
 
 class UserInputField extends StatelessWidget {
   final TextEditingController controller;

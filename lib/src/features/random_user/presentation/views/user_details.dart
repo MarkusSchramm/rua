@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:rua/src/config/config.dart';
 import 'package:rua/src/core/core.dart';
-import 'package:rua/src/features/random_user/presentation/widgets/bottom_button.dart';
 
 import '../../domain/entities/user_entity.dart';
 import '../viewmodels/local_user_bloc.dart';
 import '../viewmodels/local_user_event.dart';
 import '../widgets/description_text.dart';
-
+import '../widgets/bottom_button.dart';
 
 class UserDetails extends HookWidget {
   final String name = userDetailsName;
@@ -124,6 +124,7 @@ class UserDetails extends HookWidget {
               Text(user!.phone?? 'no phone number'),
             ],
           ),
+          if(user?.email != '') QrImageView(data: user!.email!, size: 150)
         ],
       ),
     );
@@ -163,14 +164,14 @@ class UserDetails extends HookWidget {
         content: Text('User deleted successfully.'),
       ),
     );
-    Navigator.of(context).pushNamed(savedUsersRoute);
+    Navigator.pushReplacementNamed(context, savedUsersRoute);
   }
 
   void _onHomeButtonPressed(BuildContext context) {
-    Navigator.pushNamed(context, homeRoute);
+    Navigator.pushReplacementNamed(context, homeRoute);
   }
 
   void _onEditButtonPressed(BuildContext context, UserEntity user) {
-    Navigator.of(context).pushNamed(customUserRoute, arguments: user);
+    Navigator.pushReplacementNamed(context, customUserRoute, arguments: user);
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rua/src/core/util/util.dart';
 
+import 'package:rua/src/core/util/util.dart';
 import 'package:rua/src/core/util/validation.dart';
 
 import 'custom_user_event.dart';

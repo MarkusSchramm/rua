@@ -4,13 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:rua/src/config/config.dart';
 import 'package:rua/src/core/core.dart';
-import 'package:rua/src/features/random_user/presentation/widgets/bottom_button.dart';
 
 import '../../domain/entities/user_entity.dart';
 import '../viewmodels/local_user_bloc.dart';
 import '../viewmodels/local_user_event.dart';
 import '../viewmodels/local_user_state.dart';
 import '../widgets/user_card.dart';
+import '../widgets/bottom_button.dart';
 
 class SavedUsers extends StatelessWidget {
   final String name = savedUsersName;
@@ -80,12 +80,12 @@ class SavedUsers extends StatelessWidget {
             BottomButton(
               icon: RandomUserAppRoute.randomUserGen.icon,
               toolTip: RandomUserAppRoute.randomUserGen.name,
-              onPressed: () => _onGeneratorButtonPressed(context),
+              onPressed: () => _onRandomGeneratorButtonPressed(context),
             ),
             BottomButton(
               icon: RandomUserAppRoute.customUserGen.icon,
               toolTip: RandomUserAppRoute.customUserGen.name,
-              onPressed: () => _onGeneratorButtonPressed(context),
+              onPressed: () => _onCustomGeneratorButtonPressed(context),
             ),
           ],
         ),
@@ -99,11 +99,15 @@ class SavedUsers extends StatelessWidget {
   }
 
   void _onHomeButtonPressed(BuildContext context) {
-    Navigator.pushNamed(context, homeRoute);
+    Navigator.pushReplacementNamed(context, homeRoute);
   }
 
-  void _onGeneratorButtonPressed(BuildContext context) {
-    Navigator.pushNamed(context, randomUserRoute);
+  void _onCustomGeneratorButtonPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, customUserRoute);
+  }
+
+  void _onRandomGeneratorButtonPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, randomUserRoute);
   }
 
   void _onRemoveUser(BuildContext context, UserEntity user) {
@@ -111,6 +115,6 @@ class SavedUsers extends StatelessWidget {
   }
 
   void _onUserPressed(BuildContext context, UserEntity user) {
-    Navigator.pushNamed(context, userDetailsRoute, arguments: user);
+    Navigator.pushReplacementNamed(context, userDetailsRoute, arguments: user);
   }
 }

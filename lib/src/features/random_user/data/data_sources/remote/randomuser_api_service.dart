@@ -2,6 +2,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
 import 'package:rua/src/core/constants/constants.dart';
+
 import '../../models/response_model.dart';
 
 part 'randomuser_api_service.g.dart';

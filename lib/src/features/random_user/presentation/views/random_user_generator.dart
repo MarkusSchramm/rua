@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:rua/src/config/config.dart';
-import 'package:rua/src/features/random_user/presentation/viewmodels/local_user_bloc.dart';
-import 'package:rua/src/features/random_user/presentation/viewmodels/remote_user_bloc.dart';
-import 'package:rua/src/features/random_user/presentation/viewmodels/remote_user_state.dart';
-import 'package:rua/src/features/random_user/presentation/widgets/bottom_button.dart';
 
 import '../../domain/entities/user_entity.dart';
+import '../viewmodels/local_user_bloc.dart';
 import '../viewmodels/local_user_event.dart';
 import '../viewmodels/local_user_state.dart';
+import '../viewmodels/remote_user_bloc.dart';
 import '../viewmodels/remote_user_event.dart';
+import '../viewmodels/remote_user_state.dart';
 import '../widgets/user_card.dart';
+import '../widgets/bottom_button.dart';
 
 class RandomUserGenerator extends StatefulWidget {
 
@@ -99,7 +99,7 @@ class _RandomUserGeneratorState extends State<RandomUserGenerator> {
               BottomButton(
                 icon: RandomUserAppRoute.home.icon,
                 toolTip: RandomUserAppRoute.home.name,
-                onPressed: () => Navigator.pushNamed(context, homeRoute),
+                onPressed: () => Navigator.pushReplacementNamed(context, homeRoute),
               ),
               BottomButton(
                 icon: RandomUserAppRoute.randomUserGen.icon,
@@ -119,11 +119,11 @@ class _RandomUserGeneratorState extends State<RandomUserGenerator> {
   }
 
   void _onUserPressed(BuildContext context, UserEntity user) {
-    Navigator.pushNamed(context, userDetailsRoute, arguments: user);
+    Navigator.pushReplacementNamed(context, userDetailsRoute, arguments: user);
   }
 
   void _onAllSavedUsersPressed(BuildContext context) {
-    Navigator.pushNamed(context, savedUsersRoute);
+    Navigator.pushReplacementNamed(context, savedUsersRoute);
   }
 
   void _onGenerateRandomUsersButtonPressed(BuildContext context, RemoteUserState state, int quantity) {
@@ -143,7 +143,7 @@ class _RandomUserGeneratorState extends State<RandomUserGenerator> {
                 for(var user in users) {
                   BlocProvider.of<LocalUserBloc>(context).add(SaveUser(user: user));
                 }
-                Navigator.pushNamed(context, randomUserRoute);
+                Navigator.pushReplacementNamed(context, randomUserRoute);
               },
               child: const Text('Save'),
             ));

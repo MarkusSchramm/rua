@@ -1,8 +1,6 @@
 export 'routes/routes.dart';
 export 'routes/route_names.dart';
 
-export 'styles/styles.dart';
-
 export 'themes/themes.dart';
 export 'themes/theme_names.dart';
 

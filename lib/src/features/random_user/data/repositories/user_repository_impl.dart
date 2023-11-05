@@ -2,11 +2,12 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 import 'package:rua/src/core/util/data_state.dart';
+
+import '../../domain/entities/user_entity.dart';
+import '../../domain/repositories/user_repository.dart';
 import '../data_sources/local/user_database.dart';
 import '../data_sources/remote/randomuser_api_service.dart';
 import '../models/user_model.dart';
-import '../../domain/entities/user_entity.dart';
-import '../../domain/repositories/user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final RandomUserApiService _randomUserApiService;
