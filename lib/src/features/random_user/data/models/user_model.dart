@@ -15,7 +15,7 @@ class UserModel extends UserEntity {
     super.birthMonth,
     super.birthDay,
     super.age,
-    super.email,
+    required super.email,
     super.phone,
     super.urlToLargeImage,
     super.urlToMediumImage,

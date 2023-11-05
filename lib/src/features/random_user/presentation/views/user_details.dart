@@ -87,11 +87,27 @@ class UserDetails extends HookWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20.0),
-          Column(
+          const SizedBox(height: 40.0),
+          Row(
             children: [
-              const DescriptionText(description: 'AGE'),
-              Text((user!.age?? 0).toString()),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    const DescriptionText(description: 'BIRTHDAY'),
+                    Text('${user?.birthDay?? 'dd'}.${user?.birthMonth?? 'mm'}.${user?.birthYear?? 'yyyy'}'),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    const DescriptionText(description: 'AGE'),
+                    Text((user!.age?? 0).toString()),
+                  ],
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 40.0),
@@ -105,7 +121,7 @@ class UserDetails extends HookWidget {
           Column(
             children: [
               const DescriptionText(description: 'PHONE'),
-              Text(user!.phone?? ''),
+              Text(user!.phone?? 'no phone number'),
             ],
           ),
         ],

@@ -13,6 +13,8 @@ import 'package:rua/src/features/random_user/domain/usecases/save_user.dart';
 import 'package:rua/src/features/random_user/presentation/viewmodels/local_user_bloc.dart';
 import 'package:rua/src/features/random_user/presentation/viewmodels/remote_user_bloc.dart';
 
+import '../../features/random_user/presentation/viewmodels/custom_user_bloc.dart';
+
 final sl = GetIt.instance;
 
 Future<void> initializeDependencies() async {
@@ -31,6 +33,7 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<RemoveUserUseCase>(RemoveUserUseCase(sl()));
   sl.registerSingleton<SaveUserUseCase>(SaveUserUseCase(sl()));
 
+  sl.registerFactory<CustomUserBloc>(() => CustomUserBloc());
   sl.registerFactory<RemoteUserBloc>(() => RemoteUserBloc(sl()));
   sl.registerFactory<LocalUserBloc>(() => LocalUserBloc(sl(), sl(), sl(), sl()));
 }

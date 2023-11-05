@@ -15,6 +15,12 @@ class DataFail<T> extends DataState<T> {
   const DataFail(DioException error) : super(error: error);
 }
 
+class InputFail<T> extends DataState<T> {
+  final TextFieldError? inputError;
+
+  const InputFail(this.inputError);
+}
+
 enum TextFieldError {
   empty, 
   invalid
